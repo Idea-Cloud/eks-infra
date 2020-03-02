@@ -5,6 +5,15 @@
 * Docker version > 19.03.6
 * GNU Make > 4.2.1
 
+## Quick install and setup for impatient people
+```bash
+export PROD_AWS_ACCESS_KEY_ID=<aws_access_key_id> \
+PROD_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> \
+PROD_AWS_DEFAULT_REGION=<aws_default_region> \
+TARGET_ENV=prod; \
+make install && make init-state && AUTO_APPROVE=1 make apply
+```
+
 ## Install (build image with deps)
 ```bash
 make install
@@ -15,14 +24,14 @@ make install
 PROD_AWS_ACCESS_KEY_ID=<aws_access_key_id> PROD_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> PROD_AWS_DEFAULT_REGION=<aws_default_region> TARGET_ENV=prod make init-state
 ```
 
-## Plan
-```bash
-PROD_AWS_ACCESS_KEY_ID=<aws_access_key_id> PROD_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> PROD_AWS_DEFAULT_REGION=<aws_default_region> TARGET_ENV=prod make plan
-```
-
 ## Apply
 ```bash
 PROD_AWS_ACCESS_KEY_ID=<aws_access_key_id> PROD_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> PROD_AWS_DEFAULT_REGION=<aws_default_region> TARGET_ENV=prod make apply
+```
+
+## Plan
+```bash
+PROD_AWS_ACCESS_KEY_ID=<aws_access_key_id> PROD_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> PROD_AWS_DEFAULT_REGION=<aws_default_region> TARGET_ENV=prod make plan
 ```
 
 ## Destroy (remove s3 bucket)
