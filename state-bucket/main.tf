@@ -14,6 +14,7 @@ provider "aws" {
 
 resource "aws_s3_bucket" "terraform_state" {
   bucket = var.tfstate_bucket
+  force_destroy = true
 
   versioning {
     enabled = true

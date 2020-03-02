@@ -45,4 +45,4 @@ EKS_TFSTATE_KEY             ?= "eks.tfstate"
 #TFVARS_file                 ?=
 #ENVIRONMENT                 ?=
 
-KUBECONFIG                  ?= ${ROOT_DIR}/.bin/config-${ENVIRONMENT}
+KUBECONFIG                  ?= ${ROOT_DIR}/.config/config-${ENVIRONMENT}

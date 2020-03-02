@@ -10,7 +10,7 @@
 make install
 ```
 
-## Init terraform state (create S3 bucket, only prod env)
+## Init terraform state (create s3 bucket, only prod env)
 ```bash
 PROD_AWS_ACCESS_KEY_ID=<aws_access_key_id> PROD_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> PROD_AWS_DEFAULT_REGION=<aws_default_region> TARGET_ENV=prod make init-state
 ```
@@ -25,7 +25,7 @@ PROD_AWS_ACCESS_KEY_ID=<aws_access_key_id> PROD_AWS_SECRET_ACCESS_KEY=<aws_secre
 PROD_AWS_ACCESS_KEY_ID=<aws_access_key_id> PROD_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> PROD_AWS_DEFAULT_REGION=<aws_default_region> TARGET_ENV=prod make apply
 ```
 
-## Destroy
+## Destroy (remove s3 bucket)
 ```bash
 PROD_AWS_ACCESS_KEY_ID=<aws_access_key_id> PROD_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key> PROD_AWS_DEFAULT_REGION=<aws_default_region> TARGET_ENV=prod make destroy
 ```
