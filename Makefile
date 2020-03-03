@@ -40,8 +40,9 @@ _apply:
 	@cd eks && make init && make apply
 	@echo "############## kube svc ##############"
 	@make kube args="get svc"
-	@echo "############## kube nodes ##############"
+	@echo "############## kube nodes / pods ##############"
 	@make kube args="get nodes"
+	@make kube args="get pods --all-namespaces"
 
 destroy:
 	@make make-in-docker LOCAL_ENV=${LOCAL_ENV} MAKE_RULE=_destroy

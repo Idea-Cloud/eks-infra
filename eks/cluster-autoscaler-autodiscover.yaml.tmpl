@@ -141,10 +141,11 @@ spec:
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '8085'
+        cluster-autoscaler.kubernetes.io/safe-to-evict: 'false'
     spec:
       serviceAccountName: cluster-autoscaler
       containers:
-        - image: k8s.gcr.io/cluster-autoscaler:v1.14.7
+        - image: k8s.gcr.io/cluster-autoscaler:${autoscaler_version}
           name: cluster-autoscaler
           resources:
             limits:
