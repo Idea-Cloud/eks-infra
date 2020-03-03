@@ -7,9 +7,14 @@
 # file that was distributed with this source code.
 ################################################################################
 
+locals {
+  eks_cluster_name = "eks-${var.environment}-cluster"
+}
 resource "aws_eks_cluster" "eks-cluster" {
-  name     = "eks-${var.environment}-cluster"
+  name     = local.eks_cluster_name
   role_arn = aws_iam_role.eks-cluster.arn
+
+  enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   vpc_config {
     subnet_ids         = concat(data.terraform_remote_state.vpc.outputs.public_subnets, data.terraform_remote_state.vpc.outputs.private_subnets)
@@ -19,6 +24,7 @@ resource "aws_eks_cluster" "eks-cluster" {
   depends_on = [
     aws_iam_role_policy_attachment.eks-cluster-AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.eks-cluster-AmazonEKSServicePolicy,
+    aws_cloudwatch_log_group.eks-cluster
   ]
 }
 

@@ -15,7 +15,7 @@
 TARGET_DOCKER_REGISTRY      ?= ideacloud.registry
 TARGET_IMAGE_NAME           ?= ideacloud-terraform
 DOCKER_TAG                  ?= $(shell git log --pretty=format:'%h' -n 1)
-DOCKER_IMAGE_NAME           ?= ${TARGET_DOCKER_REGISTRY}/${TARGET_IMAGE_NAME}:${DOCKER_TAG}
+DOCKER_IMAGE_NAME           ?= ${TARGET_DOCKER_REGISTRY}/${TARGET_IMAGE_NAME}:1.0.0
 
 ################################################################################
 #
@@ -45,4 +45,4 @@ EKS_TFSTATE_KEY             ?= "eks.tfstate"
 #TFVARS_file                 ?=
 #ENVIRONMENT                 ?=
 
-KUBECONFIG                  ?= ${ROOT_DIR}/.bin/config-${ENVIRONMENT}
+KUBECONFIG                  ?= ${ROOT_DIR}/.config/config-${ENVIRONMENT}

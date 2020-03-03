@@ -12,7 +12,7 @@ include ./makefiles/tools.Makefile
 include ./makefiles/kubectl.Makefile
 include ./makefiles/docker.Makefile
 
-LOCAL_ENV := "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} TARGET_ENV=${TARGET_ENV}"
+LOCAL_ENV := "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} TARGET_ENV=${TARGET_ENV} AUTO_APPROVE=${AUTO_APPROVE}"
 
 init-state:
 	@make make-in-docker LOCAL_ENV=${LOCAL_ENV} MAKE_RULE=_init-state
@@ -40,8 +40,9 @@ _apply:
 	@cd eks && make init && make apply
 	@echo "############## kube svc ##############"
 	@make kube args="get svc"
-	@echo "############## kube nodes ##############"
+	@echo "############## kube nodes / pods ##############"
 	@make kube args="get nodes"
+	@make kube args="get pods --all-namespaces"
 
 destroy:
 	@make make-in-docker LOCAL_ENV=${LOCAL_ENV} MAKE_RULE=_destroy
