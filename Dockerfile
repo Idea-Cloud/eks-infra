@@ -6,10 +6,11 @@
 # For the full copyright and license information, please view the LICENSE
 # file that was distributed with this source code.
 ################################################################################
-FROM debian:10-slim
 
-ENV TERRAFORM_VERSION=0.12.21
-ENV KUBECTL_VERSION=1.14.6
+FROM debian:10.4-slim
+
+ENV TERRAFORM_VERSION=0.12.28
+ENV KUBECTL_VERSION=1.16.8
 
 RUN apt-get update && apt-get install -y \
   make \
@@ -31,9 +32,8 @@ RUN mkdir -p  /usr/local/awscli \
   && ./usr/local/awscli/aws/install
 
 RUN mkdir -p  /usr/local/kubectl \
-  && curl -L https://amazon-eks.s3-us-west-2.amazonaws.com/${KUBECTL_VERSION}/2019-08-22/bin/linux/amd64/kubectl > /usr/local/kubectl/kubectl \
+  && curl -L https://amazon-eks.s3-us-west-2.amazonaws.com/${KUBECTL_VERSION}/2020-04-16/bin/linux/amd64/kubectl > /usr/local/kubectl/kubectl \
   && chmod +x /usr/local/kubectl/kubectl
 ENV PATH="${PATH}:/usr/local/kubectl"
 
 CMD ["terraform", "version"]
-#CMD ["/bin/bash", "-c", "\"while [ 1 ]; do sleep 3600; done\""]
