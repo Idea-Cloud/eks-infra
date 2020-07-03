@@ -27,6 +27,8 @@ plan:
 _plan:
 	@echo "############## VPC ##############"
 	@cd vpc && make init && make plan
+	@echo "############## ECR ##############"
+	@cd ecr && make init && make plan
 	@echo "############## EKS ##############"
 	@cd eks && make init && make plan
 
@@ -36,6 +38,8 @@ apply:
 _apply:
 	@echo "############## VPC ##############"
 	@cd vpc && make init && make apply
+	@echo "############## ECR ##############"
+	@cd ecr && make init && make apply
 	@echo "############## EKS ##############"
 	@cd eks && make init && make apply
 	@echo "############## kube svc ##############"
@@ -50,6 +54,8 @@ destroy:
 _destroy:
 	@echo "############## EKS ##############"
 	@cd eks && make init && make destroy
+	@echo "############## ECR ##############"
+	@cd ecr && make init && make destroy
 	@echo "############## VPC ##############"
 	@cd vpc && make init && make destroy
 	@echo "############## S3 BACKEND STATE ##############"
@@ -67,5 +73,7 @@ _format:
 	@cd state-bucket && make format
 	@echo "############## VPC ##############"
 	@cd vpc && make format
+	@echo "############## ECR ##############"
+	@cd ecr && make format
 	@echo "############## EKS ##############"
 	@cd eks && make format

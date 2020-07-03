@@ -7,20 +7,20 @@
 # file that was distributed with this source code.
 ################################################################################
 
-resource "null_resource" "apply-autoscaler" {
-  provisioner "local-exec" {
-    command = "cat <<EOF | kubectl apply -f -\n${templatefile("${path.module}/cluster-autoscaler-autodiscover.yaml.tmpl", { cluster_name = aws_eks_cluster.eks-cluster.name, autoscaler_version = var.cluster_autoscaler_version })} \nEOF"
-  }
+#resource "null_resource" "apply-autoscaler" {
+#  provisioner "local-exec" {
+#    command = "cat <<EOF | kubectl apply -f -\n${templatefile("${path.module}/cluster-autoscaler-autodiscover.yaml.tmpl", { cluster_name = aws_eks_cluster.eks-cluster.name, autoscaler_version = var.cluster_autoscaler_version })} \nEOF"
+#  }
+#
+#  provisioner "local-exec" {
+#    when    = destroy
+#    command = "cat <<EOF | kubectl delete -f -\n${templatefile("${path.module}/cluster-autoscaler-autodiscover.yaml.tmpl", { cluster_name = aws_eks_cluster.eks-cluster.name, autoscaler_version = var.cluster_autoscaler_version })} \nEOF"
+#  }
 
-  provisioner "local-exec" {
-    when    = destroy
-    command = "cat <<EOF | kubectl delete -f -\n${templatefile("${path.module}/cluster-autoscaler-autodiscover.yaml.tmpl", { cluster_name = aws_eks_cluster.eks-cluster.name, autoscaler_version = var.cluster_autoscaler_version })} \nEOF"
-  }
-
-  depends_on = [
-    null_resource.create-kubeconfig
-  ]
-}
+#  depends_on = [
+#    null_resource.create-kubeconfig
+#  ]
+#}
 
 #resource "null_resource" "annotate-autoscaler" {
 #  provisioner "local-exec" {

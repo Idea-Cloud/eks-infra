@@ -36,6 +36,7 @@ DOCKER_IMAGE_NAME           ?= ${TARGET_DOCKER_REGISTRY}/${TARGET_IMAGE_NAME}:1.
 
 VPC_TFSTATE_KEY             ?= "vpc.tfstate"
 EKS_TFSTATE_KEY             ?= "eks.tfstate"
+ECR_TFSTATE_KEY             ?= "ecr.tfstate"
 
 ################################################################################
 #
