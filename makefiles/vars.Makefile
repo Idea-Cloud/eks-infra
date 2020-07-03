@@ -60,6 +60,7 @@ TERRAFORM_VARS := export \
     TF_VAR_tfstate_bucket=${TFSTATE_BUCKET} \
     TF_VAR_vpc_tfstate_key=${VPC_TFSTATE_KEY} \
     TF_VAR_eks_tfstate_key=${EKS_TFSTATE_KEY} \
+		TF_VAR_ecr_tfstate_key=${ECR_TFSTATE_KEY} \
     TF_VAR_environment=${ENVIRONMENT};
 TERRAFORM_CMD := ${TERRAFORM_VARS} terraform
 

@@ -29,32 +29,12 @@ variable "tfstate_bucket" {
   description = "Terraform state bucket"
 }
 
-variable "vpc_tfstate_key" {
-  description = "VPC tfstate key"
-}
-
 ################################################################################
 #
-# EKS
+# ECR
 #
 ################################################################################
-variable "instance_types" {
-  description = "Node instance type"
-  default     = "t3.small"
-}
-
-variable "scaling_size" {
-  default = 2
-}
-
-variable "scaling_max_size" {
-  default = 4
-}
-
-variable "scaling_min_size" {
-  default = 1
-}
-
-variable "cluster_autoscaler_version" {
-  default = "v1.17.7"
+variable "name" {
+  description = "Repository name"
+  default     = "test"
 }
